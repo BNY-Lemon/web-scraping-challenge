@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Page Title</title>
+</head>
+<body>
+
+    <a href='/scrape'>Scrape</a>
+
+    <br>
+    <br>
+    <h1>Latest Mars News</h1>
+    <h2>{{ teams.news_title }}</h2>
+    <p>{{ teams.news_p }}</p>
+    <h1>Featured Mars Image</h1>
+    <img src="{{ teams.featured_image_url }}">
+    {{ teams.mars_facts | safe }}
+    <p>{{ teams.hemisphere_image_urls }}</p>
+
+    <br>
+    <br>
+    <br>
+    {% for item in teams.hemisphere_image_urls %}
+        <p>{{ item.title }}</p>
+        <img src="{{ item.img_url }}">
+    {% endfor %}
+
+</body>
+</html>
