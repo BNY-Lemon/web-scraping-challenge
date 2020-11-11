@@ -1,29 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Page Title</title>
+  <title>Mission to Mars</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css" media="screen">
 </head>
 <body>
 
-    <a href='/scrape'>Scrape</a>
-
-    <br>
-    <br>
-    <h1>Latest Mars News</h1>
-    <h2>{{ teams.news_title }}</h2>
+<div class="jumbotron-fluid text-center" style="margin-bottom:0">
+    <div class="container">
+    <h1 class=display-4>Mission to Mars </h1>
+    <a class="btn btn-primary" href="/scrape" role="button">Scrape</a>
+    </div>
+</div>
+<div class="container-fluid">
+    <h1 class=display-4>Latest Mars News</h1>
+    <h4 >{{ teams.news_title }}</h4>
     <p>{{ teams.news_p }}</p>
-    <h1>Featured Mars Image</h1>
-    <img src="{{ teams.featured_image_url }}">
-    {{ teams.mars_facts | safe }}
-    <p>{{ teams.hemisphere_image_urls }}</p>
-
-    <br>
-    <br>
-    <br>
-    {% for item in teams.hemisphere_image_urls %}
-        <p>{{ item.title }}</p>
-        <img src="{{ item.img_url }}">
-    {% endfor %}
-
+</div>
+<br>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-8">
+            <h1 class=display-4>Featured Mars Image</h1>
+            <img src="{{ teams.featured_image_url }}"  class="img-fluid" alt="Responsive image">
+        </div>
+        <div class="col-4">
+            <h3>Mars Facts</h3>
+            <table class="table table-striped">
+                <tbody>
+                    {{ teams.mars_facts | safe }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container-fluid">
+    <h3 class="text-center">Mars Hemispheres</h3>
+    <div class="row">
+        {% for item in teams.hemisphere_image_urls %}
+            <div class="col-lg-6 col-6 ">
+                <img src="{{ item.img_url }}" class="img-thumbnail img-fluid" alt="Responsive image">
+                <p>{{ item.title }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
 </body>
 </html>
