@@ -19,7 +19,7 @@ def scrape():
     featured_image_url = base_img_url + browser.find_by_xpath('//article[@class="carousel_item"]')[0]['style'].split('"')[1]
 
     url = "https://space-facts.com/mars/"
-    mars_facts = pd.read_html(url)[0].to_html()
+    mars_facts = pd.read_html(url)[0].to_html(index=False)
 
     url = "https://astrogeology.usgs.gov/search/results?q=hemisphere+enhanced&k1=target&v1=Mars"
     browser.visit(url)

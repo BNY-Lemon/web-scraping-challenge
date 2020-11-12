@@ -19,7 +19,7 @@ db = client.team_db
 @app.route('/')
 def index():
     # Store the entire team collection in a list
-    teams = list(db.team.find())[0]
+    teams = db.team.find_one()
     print(teams)
 
     # Return the template with the teams list passed in
@@ -27,7 +27,7 @@ def index():
 
 @app.route('/scrape')
 def scrape():
-    db.team.insert_many([myScrape()])
+    db.team.update({}, myScrape(), upsert= True)
     return redirect("/")
 
 

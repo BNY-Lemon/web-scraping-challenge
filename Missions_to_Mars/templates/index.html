@@ -32,11 +32,11 @@
         </div>
         <div class="col-4">
             <h3>Mars Facts</h3>
-            <table class="table table-striped">
-                <tbody>
-                    {{ teams.mars_facts | safe }}
-                </tbody>
-            </table>
+            <!-- <table class="table table-striped"> -->
+                <!-- <tbody> -->
+                    {{ teams.mars_facts.replace("dataframe", "table-striped") | safe }}
+                <!-- </tbody>
+            </table> -->
         </div>
     </div>
 </div>
